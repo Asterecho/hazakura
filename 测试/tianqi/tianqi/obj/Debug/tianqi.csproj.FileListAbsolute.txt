@@ -1,0 +1,9 @@
+C:\Users\Administrator\Desktop\tianqi\tianqi\obj\Debug\tianqi.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\tianqi\tianqi\bin\Debug\tianqi.exe.config
+C:\Users\Administrator\Desktop\tianqi\tianqi\bin\Debug\tianqi.exe
+C:\Users\Administrator\Desktop\tianqi\tianqi\bin\Debug\tianqi.pdb
+C:\Users\Administrator\Desktop\tianqi\tianqi\bin\Debug\LitJson.dll
+C:\Users\Administrator\Desktop\tianqi\tianqi\obj\Debug\tianqi.exe
+C:\Users\Administrator\Desktop\tianqi\tianqi\obj\Debug\tianqi.pdb
+C:\Users\Administrator\Desktop\tianqi\tianqi\obj\Debug\tianqi.MainForm.resources
+C:\Users\Administrator\Desktop\tianqi\tianqi\obj\Debug\tianqi.csproj.GenerateResource.Cache

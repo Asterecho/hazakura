@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\switchwallpaper\switchwallpaper\bin\Debug\switchwallpaper.exe.config
+C:\Users\Administrator\Desktop\switchwallpaper\switchwallpaper\bin\Debug\switchwallpaper.exe
+C:\Users\Administrator\Desktop\switchwallpaper\switchwallpaper\bin\Debug\switchwallpaper.pdb
+C:\Users\Administrator\Desktop\switchwallpaper\switchwallpaper\obj\Debug\switchwallpaper.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\switchwallpaper\switchwallpaper\obj\Debug\switchwallpaper.exe
+C:\Users\Administrator\Desktop\switchwallpaper\switchwallpaper\obj\Debug\switchwallpaper.pdb

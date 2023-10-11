@@ -1,0 +1,11 @@
+C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\hazakura.exe.config
+C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\hazakura.exe
+C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\hazakura.pdb
+C:\Users\Administrator\Desktop\hazakura\hazakura\obj\Debug\hazakura.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\hazakura\hazakura\obj\Debug\hazakura.exe
+C:\Users\Administrator\Desktop\hazakura\hazakura\obj\Debug\hazakura.pdb
+C:\Users\Administrator\Desktop\hazakura\hazakura\obj\Debug\hazakura.MainForm.resources
+C:\Users\Administrator\Desktop\hazakura\hazakura\obj\Debug\hazakura.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\LitJson.dll
+C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\CaptureImageTool.dll
+C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\zxing.dll

@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\SetVolume\SetVolume\bin\Debug\SetVolume.exe.config
+C:\Users\Administrator\Desktop\SetVolume\SetVolume\bin\Debug\SetVolume.exe
+C:\Users\Administrator\Desktop\SetVolume\SetVolume\bin\Debug\SetVolume.pdb
+C:\Users\Administrator\Desktop\SetVolume\SetVolume\obj\Debug\SetVolume.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\SetVolume\SetVolume\obj\Debug\SetVolume.exe
+C:\Users\Administrator\Desktop\SetVolume\SetVolume\obj\Debug\SetVolume.pdb
+C:\Users\Administrator\Desktop\SetVolume\SetVolume\obj\Debug\SetVolume.MainForm.resources
+C:\Users\Administrator\Desktop\SetVolume\SetVolume\obj\Debug\SetVolume.csproj.GenerateResource.Cache

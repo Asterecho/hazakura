@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\huyan\huyan\bin\Debug\huyan.exe.config
+C:\Users\Administrator\Desktop\huyan\huyan\bin\Debug\huyan.exe
+C:\Users\Administrator\Desktop\huyan\huyan\bin\Debug\huyan.pdb
+C:\Users\Administrator\Desktop\huyan\huyan\obj\Debug\huyan.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\huyan\huyan\obj\Debug\huyan.exe
+C:\Users\Administrator\Desktop\huyan\huyan\obj\Debug\huyan.pdb

@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\playmusic\playmusic\obj\Debug\playmusic.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\playmusic\playmusic\bin\Debug\playmusic.exe.config
+C:\Users\Administrator\Desktop\playmusic\playmusic\bin\Debug\playmusic.exe
+C:\Users\Administrator\Desktop\playmusic\playmusic\bin\Debug\playmusic.pdb
+C:\Users\Administrator\Desktop\playmusic\playmusic\obj\Debug\playmusic.exe
+C:\Users\Administrator\Desktop\playmusic\playmusic\obj\Debug\playmusic.pdb

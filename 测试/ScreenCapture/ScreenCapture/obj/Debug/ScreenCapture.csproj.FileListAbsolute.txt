@@ -1,0 +1,9 @@
+C:\Users\Administrator\Desktop\ScreenCapture\ScreenCapture\bin\Debug\ScreenCapture.exe.config
+C:\Users\Administrator\Desktop\ScreenCapture\ScreenCapture\bin\Debug\ScreenCapture.exe
+C:\Users\Administrator\Desktop\ScreenCapture\ScreenCapture\bin\Debug\ScreenCapture.pdb
+C:\Users\Administrator\Desktop\ScreenCapture\ScreenCapture\bin\Debug\CaptureImageTool.dll
+C:\Users\Administrator\Desktop\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.MainForm.resources
+C:\Users\Administrator\Desktop\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.exe
+C:\Users\Administrator\Desktop\ScreenCapture\ScreenCapture\obj\Debug\ScreenCapture.pdb

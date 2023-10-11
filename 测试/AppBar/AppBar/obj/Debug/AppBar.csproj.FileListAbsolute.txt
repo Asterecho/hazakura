@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\AppBar\AppBar\bin\Debug\AppBar.exe.config
+C:\Users\Administrator\Desktop\AppBar\AppBar\bin\Debug\AppBar.exe
+C:\Users\Administrator\Desktop\AppBar\AppBar\bin\Debug\AppBar.pdb
+C:\Users\Administrator\Desktop\AppBar\AppBar\obj\Debug\AppBar.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\AppBar\AppBar\obj\Debug\AppBar.exe
+C:\Users\Administrator\Desktop\AppBar\AppBar\obj\Debug\AppBar.pdb
+C:\Users\Administrator\Desktop\AppBar\AppBar\obj\Debug\AppBar.MainForm.resources
+C:\Users\Administrator\Desktop\AppBar\AppBar\obj\Debug\AppBar.csproj.GenerateResource.Cache

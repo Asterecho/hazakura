@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 5.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "switchwallpaper", "switchwallpaper\switchwallpaper.csproj", "{B13805E6-3968-42EB-A82E-5333F2AA537F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B13805E6-3968-42EB-A82E-5333F2AA537F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B13805E6-3968-42EB-A82E-5333F2AA537F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B13805E6-3968-42EB-A82E-5333F2AA537F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B13805E6-3968-42EB-A82E-5333F2AA537F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
