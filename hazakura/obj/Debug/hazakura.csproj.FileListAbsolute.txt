@@ -9,3 +9,6 @@ C:\Users\Administrator\Desktop\hazakura\hazakura\obj\Debug\hazakura.csproj.Gener
 C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\LitJson.dll
 C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\CaptureImageTool.dll
 C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\zxing.dll
+C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\AipSdk.dll
+C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\RestSharp.dll

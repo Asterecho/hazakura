@@ -14,14 +14,18 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices; 
 using System.Diagnostics;
 using LitJson;
-using System.Net;
+using System.Text;
 using System.IO;
+using System.Net;
+using RestSharp;
 using CSharpWin_JD.CaptureImage;
 using INIHelper;
 using ZXing.QrCode;
 using ZXing;
 using ZXing.Common;
 using ZXing.Rendering;
+using Newtonsoft;
+using Baidu.Aip;
 
 namespace hazakura
 {
@@ -107,9 +111,15 @@ namespace hazakura
 			pictureBox1.Location= (Point)new Size(0, 0);  
 			
 			IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
-			string cityid=ini.IniReadValue("city","id");
-                     
-            string info=GetWebClient("https://v0.yiketianqi.com/api?unescape=1&version=v91&appid=15515871&appsecret=l9pLxma5&ext=&cityid="+cityid);
+			string cityid=ini.IniReadValue("weather","cityid");
+			string appid=ini.IniReadValue("weather","appid");
+			string appsecret=ini.IniReadValue("weather","appsecret");
+             if (appid=="") {
+             	MessageBox.Show("请到setting.ini设置appid");
+             	this.Close();
+			} 
+    
+			string info=GetWebClient("https://v0.yiketianqi.com/api?unescape=1&version=v91&appid="+appid+"&appsecret="+appsecret+"&ext=&cityid="+cityid);
 			JsonData json=JsonMapper.ToObject(info);  //https://blog.csdn.net/DoyoFish/article/details/81976181
 			JsonData data=json["data"];
 			string weather=data[0]["wea"].ToString();
@@ -117,7 +127,6 @@ namespace hazakura
 			string tem=data[0]["tem"].ToString()+"°C";
 			string humidity=data[0]["humidity"].ToString();
 			
-		  
 		  label3.Text=System.DateTime.Now.ToString("F"); 
 		  label3.Width= TextRenderer.MeasureText(label3.Text, label3.Font).Width; 
 		  label3.Location=(Point)new Size(Screen.PrimaryScreen.Bounds.Width-label3.Width, this.Height/4);
@@ -159,6 +168,14 @@ namespace hazakura
 		 pictureBox6.Height=this.Height;
 		  pictureBox6.Width=this.Height;
 		  pictureBox6.Location=(Point)new Size(this.Width/5-(Height+Height/4)*2,0);
+		  
+		   pictureBox7.Height=this.Height;
+		  pictureBox7.Width=this.Height;
+		  pictureBox7.Location=(Point)new Size(this.Width/5-(Height+Height/4)*3,0);
+		  
+		  pictureBox8.Height=this.Height;
+		  pictureBox8.Width=this.Height;
+		  pictureBox8.Location=(Point)new Size(this.Width/5-(Height+Height/4)*4,0);
 		 
 			//EnableBlur();
 			RegisterBar();
@@ -550,7 +567,9 @@ public void Mute()
 }
 		 
 		void Label5MouseClick(object sender, MouseEventArgs e)
-		{						 if (e.Button == MouseButtons.Left) {//左键
+		{
+			
+			 if (e.Button == MouseButtons.Left) {//左键
 				IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
 				string path =ini.IniReadValue("music","path");
 			
@@ -572,6 +591,7 @@ public void Mute()
 				
 				label5.Text=Path.GetFileNameWithoutExtension(musicpath);
 				label5.Width= TextRenderer.MeasureText(label5.Text, label5.Font).Width; 
+				 
 			} 
 			//右键
     		else if(e.Button == MouseButtons.Right){
@@ -633,7 +653,102 @@ public void Mute()
 			dark dk=new dark();
 			dk.Show();
 		}
+		//调用记事本传入文本
 		 
+		void PictureBox7Click(object sender, EventArgs e)
+		{
+			IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
+			string API_KEY=ini.IniReadValue("ocr","apikey");
+			string SECRET_KEY=ini.IniReadValue("ocr","secretkey");
+			 
+			if (API_KEY=="") {
+				MessageBox.Show("请到setting.ini设置API_KEY");
+				this.Close();
+				}
+			var client = new Baidu.Aip.Ocr.Ocr(API_KEY, SECRET_KEY);
+            client.Timeout = 60000;  // 修改超时时间
+            
+	          //  var result = client.GeneralEnhanced(imageToByte(pictureBox1.Image));        //本地图图片
+	          var image = imageToByte(Clipboard.GetImage());
+				// 调用通用文字识别, 图片参数为本地图片，可能会抛出网络等异常，请使用try/catch捕获
+				var result = client.GeneralBasic(image);
+				Console.WriteLine(result);
+				// 如果有可选参数
+				var options = new Dictionary<string, object>{
+				    {"language_type", "CHN_ENG"},
+				    {"detect_direction", "true"},
+				    {"detect_language", "true"},
+				    {"probability", "true"}
+				};
+				// 带参数调用通用文字识别, 图片参数为本地图片
+	 			result = client.GeneralBasic(image, options); 
+			string info=result.ToString();
+				JsonData json=JsonMapper.ToObject(info);  //https://blog.csdn.net/DoyoFish/article/details/81976181
+				JsonData token=json["words_result"];
+				string txt="";
+				for (int i = 0; i < token.Count; i++) {
+					txt+=token[i]["words"].ToString()+"\n";			
+				MessageBox.Show(txt);
+				Clipboard.SetText(txt);
+			}
+             
+		}
+		private byte[] imageToByte(System.Drawing.Image _image)
+		{
+		    MemoryStream ms = new MemoryStream();
+		    _image.Save(ms,System.Drawing.Imaging.ImageFormat.Jpeg);
+		    return  ms.ToArray();
+		}
+		void PictureBox8Click(object sender, EventArgs e)
+		{
+			string info=GetToken();
+			JsonData json=JsonMapper.ToObject(info);  //https://blog.csdn.net/DoyoFish/article/details/81976181
+			JsonData token=json["access_token"];
+	 
+	
+			JsonData json2=JsonMapper.ToObject(textTrans(Clipboard.GetText(),token.ToString()));  //https://blog.csdn.net/DoyoFish/article/details/81976181
+			JsonData data=json2["result"];
+			string txt=data["trans_result"][0]["dst"].ToString();
+			MessageBox.Show(txt);
+			Clipboard.SetText(txt);
+		} 
+		 public static string textTrans(string txt,string token)
+        {
+            
+            string host = "https://aip.baidubce.com/rpc/2.0/mt/texttrans/v1?access_token=" + token;
+            Encoding encoding = Encoding.UTF8;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(host);
+            request.Method = "post";
+            request.KeepAlive = true;
+            String str = "{\"from\":\"auto\",\"to\":\"zh\",\"q\":\""+txt+"\",\"termIds\":\"\"}";
+            byte[] buffer = encoding.GetBytes(str);
+            request.ContentLength = buffer.Length;
+            request.GetRequestStream().Write(buffer, 0, buffer.Length);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
+            string result = reader.ReadToEnd();
+          //  Console.WriteLine(result);
+            return result;
+        }
+		
+		public static string GetToken(){
+		 	IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
+			string API_KEY=ini.IniReadValue("fanyi","apikey");
+			string SECRET_KEY=ini.IniReadValue("fanyi","secretkey");
+			if (API_KEY=="") {
+				MessageBox.Show("请到setting.ini设置API_KEY");
+				Environment.Exit(0);
+				} 
+				var client = new RestClient("https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id="+API_KEY+"&client_secret="+SECRET_KEY);
+	            client.Timeout = -1;
+	            var request = new RestRequest(Method.POST);
+	            request.AddHeader("Content-Type", "application/json");
+	            request.AddHeader("Accept", "application/json");
+	            var body = @"";
+	            request.AddParameter("application/json", body,  ParameterType.RequestBody);
+	            IRestResponse response = client.Execute(request);
+	            return response.Content;
+			}
 		 
 	}
 }

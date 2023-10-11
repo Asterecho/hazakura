@@ -1,0 +1,10 @@
+C:\Users\Administrator\Desktop\BaiduOCR\BaiduOCR\bin\Debug\BaiduOCR.exe.config
+C:\Users\Administrator\Desktop\BaiduOCR\BaiduOCR\bin\Debug\BaiduOCR.exe
+C:\Users\Administrator\Desktop\BaiduOCR\BaiduOCR\bin\Debug\BaiduOCR.pdb
+C:\Users\Administrator\Desktop\BaiduOCR\BaiduOCR\bin\Debug\AipSdk.dll
+C:\Users\Administrator\Desktop\BaiduOCR\BaiduOCR\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\BaiduOCR\BaiduOCR\obj\Debug\BaiduOCR.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\BaiduOCR\BaiduOCR\obj\Debug\BaiduOCR.MainForm.resources
+C:\Users\Administrator\Desktop\BaiduOCR\BaiduOCR\obj\Debug\BaiduOCR.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\BaiduOCR\BaiduOCR\obj\Debug\BaiduOCR.exe
+C:\Users\Administrator\Desktop\BaiduOCR\BaiduOCR\obj\Debug\BaiduOCR.pdb

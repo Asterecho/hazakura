@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\Translate\Translate\obj\Debug\Translate.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Translate\Translate\bin\Debug\Translate.exe.config
+C:\Users\Administrator\Desktop\Translate\Translate\bin\Debug\Translate.exe
+C:\Users\Administrator\Desktop\Translate\Translate\bin\Debug\Translate.pdb
+C:\Users\Administrator\Desktop\Translate\Translate\bin\Debug\RestSharp.dll
+C:\Users\Administrator\Desktop\Translate\Translate\obj\Debug\Translate.exe
+C:\Users\Administrator\Desktop\Translate\Translate\obj\Debug\Translate.pdb
+C:\Users\Administrator\Desktop\Translate\Translate\bin\Debug\LitJson.dll
