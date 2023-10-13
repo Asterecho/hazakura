@@ -17,6 +17,9 @@ using LitJson;
 using System.Text;
 using System.IO;
 using System.Net;
+using System.Web;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using CSharpWin_JD.CaptureImage;
 using INIHelper;
@@ -104,28 +107,66 @@ namespace hazakura
 			this.Height=Convert.ToInt16(Screen.PrimaryScreen.Bounds.Height * 0.03f);
 			this.Location = (Point)new Size(0, 0);  
 		//	this.TransparencyKey = this.BackColor;
-			this.Opacity = 0.6; 
+			  
 			
 			pictureBox1.Width=this.Height;
 			pictureBox1.Height=this.Height;
 			pictureBox1.Location= (Point)new Size(0, 0);  
 			
+			string weather="";
+			string weaimg="";
+			string tem="";
+			string humidity="";
+			
 			IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
-			string cityid=ini.IniReadValue("weather","cityid");
-			string appid=ini.IniReadValue("weather","appid");
-			string appsecret=ini.IniReadValue("weather","appsecret");
-             if (appid=="") {
-             	MessageBox.Show("请到setting.ini设置appid");
-             	this.Close();
-			} 
-    
-			string info=GetWebClient("https://v0.yiketianqi.com/api?unescape=1&version=v91&appid="+appid+"&appsecret="+appsecret+"&ext=&cityid="+cityid);
-			JsonData json=JsonMapper.ToObject(info);  //https://blog.csdn.net/DoyoFish/article/details/81976181
-			JsonData data=json["data"];
-			string weather=data[0]["wea"].ToString();
-			string weaimg=data[0]["wea_img"].ToString();
-			string tem=data[0]["tem"].ToString()+"°C";
-			string humidity=data[0]["humidity"].ToString();
+			string type=ini.IniReadValue("weather","type");
+			switch (type) {
+				case "1":
+				string cityid=ini.IniReadValue("weather","cityid");
+				string appid=ini.IniReadValue("weather","appid");
+				string appsecret=ini.IniReadValue("weather","appsecret");
+	             if (appid=="") {
+	             	MessageBox.Show("请到setting.ini设置appid");
+	             	this.Close();
+				} 
+	    
+				string info=GetWebClient("https://v0.yiketianqi.com/api?unescape=1&version=v91&appid="+appid+"&appsecret="+appsecret+"&ext=&cityid=CN"+cityid);
+				JsonData json=JsonMapper.ToObject(info);  //https://blog.csdn.net/DoyoFish/article/details/81976181
+				JsonData data=json["data"];
+				weather=data[0]["wea"].ToString();
+				weaimg=data[0]["wea_img"].ToString();
+				tem=data[0]["tem"].ToString()+"°C";
+				humidity=data[0]["humidity"].ToString();
+				pictureBox2.Image=Image.FromFile(Directory.GetCurrentDirectory()+"\\weaimg\\"+weaimg+".png");
+				break;
+				
+				case "2":
+				string cityid2=ini.IniReadValue("weather","cityid");
+				string json2=GetWebClient("http://t.weather.itboy.net/api/weather/city/"+cityid2);
+				JsonData txt=JsonMapper.ToObject(json2);
+				tem=txt["data"]["wendu"].ToString()+"°C";
+				humidity=txt["data"]["shidu"].ToString();
+				weather=txt["data"]["forecast"][0]["type"].ToString();
+				pictureBox2.Image=Image.FromFile(Directory.GetCurrentDirectory()+"\\res\\"+weather+".ico");
+				break;
+				
+				case "3":
+				string cityid3=ini.IniReadValue("weather","cityid");
+				string tm=DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString();
+			//	string url="http://d1.weather.com.cn/dingzhi/101131001.html?_="+tm; //简单天气信息
+			//	string url2="http://toy1.weather.com.cn/search?cityname=%E4%BC%8A%E5%AE%81"; //查看城市对应id
+				string url3="http://d1.weather.com.cn/sk_2d/"+cityid3+".html?_="+tm; //详细天气信息
+				 
+				string json3=httpGet(url3,"d1.weather.com.cn").Replace("var dataSK=","");
+				JsonData txt2=JsonMapper.ToObject(json3);
+				tem=txt2["temp"].ToString()+"°C";
+				humidity=txt2["sd"].ToString();
+				weather=txt2["weather"].ToString();
+				weaimg=txt2["weathercode"].ToString();
+				pictureBox2.Image=Image.FromFile(Directory.GetCurrentDirectory()+"\\res\\weather_icons_blue\\"+weaimg+".ico");
+				break;
+			}
+			
 			
 		  label3.Text=System.DateTime.Now.ToString("F"); 
 		  label3.Width= TextRenderer.MeasureText(label3.Text, label3.Font).Width; 
@@ -137,7 +178,7 @@ namespace hazakura
           label1.Width= TextRenderer.MeasureText(label1.Text, label1.Font).Width; 
           label1.Location=(Point)new Size(label2.Location.X-label1.Width,this.Height/4);
           
-		  pictureBox2.Image=Image.FromFile(Directory.GetCurrentDirectory()+"\\weaimg\\"+weaimg+".png");
+		//  pictureBox2.Image=Image.FromFile(Directory.GetCurrentDirectory()+"\\weaimg\\"+weaimg+".png");
 		  pictureBox2.Height=this.Height;
 		  pictureBox2.Width=this.Height;
 		  pictureBox2.Location=(Point)new Size(label1.Location.X-Height,0);
@@ -145,9 +186,7 @@ namespace hazakura
 			label4.Text=GetWebClient("https://v1.hitokoto.cn/?encode=text");
 			label4.Width= TextRenderer.MeasureText(label4.Text, label4.Font).Width; 
 			label4.Location=(Point)new Size((Screen.PrimaryScreen.Bounds.Width-label4.Width)/2, this.Height/4);
-		  
-			
-		 
+
 		  pictureBox3.Height=this.Height;
 		  pictureBox3.Width=this.Height;
 		 pictureBox3.Location=(Point)new Size(label3.Location.X-pictureBox3.Width-this.Height/4,0);
@@ -159,25 +198,29 @@ namespace hazakura
           
           pictureBox4.Height=this.Height;
 		  pictureBox4.Width=this.Height;
-		 pictureBox4.Location=(Point)new Size(this.Width/5,0);
+		 pictureBox4.Location=(Point)new Size(this.Width/5+Height,0);
 		
 		  pictureBox5.Height=this.Height;
 		  pictureBox5.Width=this.Height;
-		 pictureBox5.Location=(Point)new Size(this.Width/5-Height-Height/4,0);
+		 pictureBox5.Location=(Point)new Size(this.Width/5-Height-Height/4+Height,0);
 		 
 		 pictureBox6.Height=this.Height;
 		  pictureBox6.Width=this.Height;
-		  pictureBox6.Location=(Point)new Size(this.Width/5-(Height+Height/4)*2,0);
+		  pictureBox6.Location=(Point)new Size(this.Width/5-(Height+Height/4)*2+Height,0);
 		  
 		   pictureBox7.Height=this.Height;
 		  pictureBox7.Width=this.Height;
-		  pictureBox7.Location=(Point)new Size(this.Width/5-(Height+Height/4)*3,0);
+		  pictureBox7.Location=(Point)new Size(this.Width/5-(Height+Height/4)*3+Height,0);
 		  
 		  pictureBox8.Height=this.Height;
 		  pictureBox8.Width=this.Height;
-		  pictureBox8.Location=(Point)new Size(this.Width/5-(Height+Height/4)*4,0);
+		  pictureBox8.Location=(Point)new Size(this.Width/5-(Height+Height/4)*4+Height,0);
 		 
-			//EnableBlur();
+		  pictureBox9.Height=this.Height;
+		  pictureBox9.Width=this.Height;
+		 pictureBox9.Location=(Point)new Size(this.Width/5+Height*2+Height/4,0);
+		 
+		//	EnableBlur();
 			RegisterBar();
 			//控件自适应 https://blog.csdn.net/cdc8596/article/details/111386085
 			
@@ -433,6 +476,8 @@ namespace hazakura
         }
         private string GetWebClient(string url)
 		{
+        	ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+		    
 		    string strHTML = "";
 		    WebClient myWebClient = new WebClient();
 		    Stream myStream = myWebClient.OpenRead(url);
@@ -441,13 +486,65 @@ namespace hazakura
 		    myStream.Close();
 		    return strHTML;
 		}
+        public static string httpGet(string Url,string host)
+        {
+            string retString = string.Empty;
+            //System.GC.Collect();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
+            request.Proxy = null;
+            request.KeepAlive = false;
+            request.Method = "GET";
+            request.ContentType = "text/html";
+            request.Host=host;
+            request.Referer="http://www.weather.com.cn/";
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+            try
+            {
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                Stream myResponseStream = response.GetResponseStream();
+                StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.UTF8);
+                retString = myStreamReader.ReadToEnd();
+                myStreamReader.Close();
+                myResponseStream.Close();
+
+                if (response != null)
+                {
+                    response.Close();
+                }
+                if (request != null)
+                {
+                    request.Abort();
+                }
+            }catch(Exception ex){
+                //抛出异常返回具体错误消息
+                retString = ex.Message;
+            }
+            return retString;
+        } 
 		 // 歌词 一言 小说 RSS
 		void Label4Click(object sender, EventArgs e)
 		{
-			label4.Text=GetWebClient("https://v1.hitokoto.cn/?encode=text");
-			label4.Width= TextRenderer.MeasureText(label4.Text, label4.Font).Width; 
-			label4.Location=(Point)new Size((Screen.PrimaryScreen.Bounds.Width-label4.Width)/2, this.Height/4);
-		  
+			 IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
+			string type=ini.IniReadValue("hitokoto","type");
+			switch (type) {
+				case "1":
+				label4.Text=GetWebClient("https://v1.hitokoto.cn/?encode=text");
+				label4.Width= TextRenderer.MeasureText(label4.Text, label4.Font).Width; 
+				label4.Location=(Point)new Size((Screen.PrimaryScreen.Bounds.Width-label4.Width)/2, this.Height/4);
+				break;
+				
+				case "2":
+				string txt=ini.IniReadValue("hitokoto","txt");
+				string[] line=txt.Split('|');
+				Random rd = new Random();
+	            int i = rd.Next(0,line.Length);
+	            label4.Text=line[i];
+	            label4.Width= TextRenderer.MeasureText(label4.Text, label4.Font).Width; 
+				label4.Location=(Point)new Size((Screen.PrimaryScreen.Bounds.Width-label4.Width)/2, this.Height/4);
+				break;
+			}
+			
+			
 		}
 		void PictureBox2Click(object sender, EventArgs e)
 		{
@@ -511,7 +608,11 @@ namespace hazakura
 		}
 		void PictureBox1Click(object sender, EventArgs e)
 		{
-			Process.Start ("SlideToShutDown.exe" ); 
+			IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
+			string flag=ini.IniReadValue("sakura","flag");
+			if (flag=="1") {
+				Process.Start ("SlideToShutDown.exe" ); 
+			}
 		}
 		void Label3Click(object sender, EventArgs e)
 		{
@@ -570,28 +671,30 @@ public void Mute()
 		{
 			
 			 if (e.Button == MouseButtons.Left) {//左键
-				IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
-				string path =ini.IniReadValue("music","path");
-			
-				//String = @"E:\歌曲";
-				string[] files = Directory.GetFiles(path, "*.mp3");
-				string t="";
-				foreach (string file in files)
-				{
-					t+=file+"\n";
-				}
-				 string[] line=t.Split('\n');
-				Random rd = new Random();
-	            int i = rd.Next(0,line.Length);
-	            string  musicpath=line[i];
-	            
-	            
-	            musicplay mp=new musicplay();
-				mp.PlayMusic(musicpath);
-				
-				label5.Text=Path.GetFileNameWithoutExtension(musicpath);
-				label5.Width= TextRenderer.MeasureText(label5.Text, label5.Font).Width; 
-				 
+				try {
+					IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
+					string path =ini.IniReadValue("music","path");
+					
+					string[] files = Directory.GetFiles(path, "*.mp3");
+					string t="";
+					foreach (string file in files)
+					{
+						t+=file+"\n";
+					}
+					 string[] line=t.Split('\n');
+					Random rd = new Random();
+		            int i = rd.Next(0,line.Length);
+		            string  musicpath=line[i];
+		            
+		            
+		            musicplay mp=new musicplay();
+					mp.PlayMusic(musicpath);
+					
+					label5.Text=Path.GetFileNameWithoutExtension(musicpath);
+					label5.Width= TextRenderer.MeasureText(label5.Text, label5.Font).Width; 
+				} catch (Exception) {
+					MessageBox.Show("请设置歌曲文件夹路径，并且保证含有mp3格式歌曲");
+				}	 
 			} 
 			//右键
     		else if(e.Button == MouseButtons.Right){
@@ -646,12 +749,17 @@ public void Mute()
 				Clipboard.SetImage(GetQRCodeByZXingNet(Clipboard.GetText(), 200, 200));
 			} 
 		}
-		 
-		 
-		void PictureBox6Click(object sender, EventArgs e)
-		{
-			dark dk=new dark();
-			dk.Show();
+		 public static dark dk = null ; ////设置为全局变量，以便其余窗体 https://zhuanlan.zhihu.com/p/352081599
+		void PictureBox6MouseClick(object sender, MouseEventArgs e)
+		{	
+			if (e.Button == MouseButtons.Left) {//左键
+				dk=new dark();
+				dk.Show();
+			}
+			//右键
+    		else if(e.Button == MouseButtons.Right){
+				dk.Close();
+			} 
 		}
 		//调用记事本传入文本
 		 
@@ -687,11 +795,10 @@ public void Mute()
 				JsonData token=json["words_result"];
 				string txt="";
 				for (int i = 0; i < token.Count; i++) {
-					txt+=token[i]["words"].ToString()+"\n";			
-				MessageBox.Show(txt);
-				Clipboard.SetText(txt);
-			}
-             
+					txt+=token[i]["words"].ToString()+"\n";	
+				}
+             MessageBox.Show(txt);
+			 Clipboard.SetText(txt);
 		}
 		private byte[] imageToByte(System.Drawing.Image _image)
 		{
@@ -701,16 +808,27 @@ public void Mute()
 		}
 		void PictureBox8Click(object sender, EventArgs e)
 		{
-			string info=GetToken();
-			JsonData json=JsonMapper.ToObject(info);  //https://blog.csdn.net/DoyoFish/article/details/81976181
-			JsonData token=json["access_token"];
-	 
-	
-			JsonData json2=JsonMapper.ToObject(textTrans(Clipboard.GetText(),token.ToString()));  //https://blog.csdn.net/DoyoFish/article/details/81976181
-			JsonData data=json2["result"];
-			string txt=data["trans_result"][0]["dst"].ToString();
-			MessageBox.Show(txt);
-			Clipboard.SetText(txt);
+			IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
+			string type=ini.IniReadValue("fanyi","type");
+			switch (type) {
+				case "1":
+				string t=HttpUtility.UrlEncode(Clipboard.GetText(),System.Text.Encoding.UTF8);
+				string json3=GetWebClient("https://translate.plausibility.cloud/api/v1/auto/zh/"+t);
+				JsonData txt2=JsonMapper.ToObject(json3);  //https://blog.csdn.net/DoyoFish/article/details/81976181
+				MessageBox.Show(txt2["translation"].ToString());
+				Clipboard.SetText(txt2["translation"].ToString());
+				break;
+				case "2":
+				string info=GetToken();
+				JsonData json=JsonMapper.ToObject(info);  //https://blog.csdn.net/DoyoFish/article/details/81976181
+				JsonData token=json["access_token"];
+				JsonData json2=JsonMapper.ToObject(textTrans(Clipboard.GetText(),token.ToString()));  //https://blog.csdn.net/DoyoFish/article/details/81976181
+				JsonData data=json2["result"];
+				string txt=data["trans_result"][0]["dst"].ToString();
+				MessageBox.Show(txt);
+				Clipboard.SetText(txt);	
+				break;
+			}
 		} 
 		 public static string textTrans(string txt,string token)
         {
@@ -749,6 +867,59 @@ public void Mute()
 	            IRestResponse response = client.Execute(request);
 	            return response.Content;
 			}
+		
+		void PictureBox9MouseClick(object sender, MouseEventArgs e)
+		{
+			 
+			if (e.Button == MouseButtons.Left) {//左键
+				
+				flag=true;
+				IniFiles ini=new IniFiles(Directory.GetCurrentDirectory()+"\\setting.ini");
+				min=int.Parse(ini.IniReadValue("tomato","work"));
+				sec=int.Parse(ini.IniReadValue("tomato","rest"));
+				ts=new TimeSpan(0, min, 0);
+			}
+			//右键
+    		else if(e.Button == MouseButtons.Right){
+				 
+				flag=false;
+				ToolTip toolTip1 =  new  ToolTip();
+				toolTip1.SetToolTip( pictureBox9, "番茄时钟" );
+			} 
+		}
+		bool flag=false;
+		int min=0;
+		int sec=0;
+		
+	 TimeSpan ts = new TimeSpan(0, 0, 0);
+		 
+	async	void Timer2Tick(object sender, EventArgs e)
+		{ 
+			if (flag) {
+				ts = ts.Subtract(new TimeSpan(0, 0, 1));
+				string t=ts.ToString("T");
+				ToolTip toolTip1 =  new  ToolTip();
+				toolTip1.SetToolTip( pictureBox9,  t );
+				Image img=pictureBox9.Image;
+				pictureBox9.Image=pictureBox10.Image;
+				pictureBox10.Image=img;
+			if (ts.TotalSeconds < 1.0) {
+					timer2.Enabled = false;
+					musicplay mp=new musicplay();
+					mp.PlayMusic("ding.wav");
+				
+					this.Refresh();
+				//	Thread.Sleep(20*1000);
+					await Task.Delay(sec*1000);	 
+					timer2.Enabled = true;
+					ts = new TimeSpan(0, min, 0);
+				}
+			}
+			
+		}
+		
+		 
+		 
 		 
 	}
 }

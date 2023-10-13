@@ -1,0 +1,9 @@
+C:\Users\Administrator\Desktop\test\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\test\test\obj\Debug\test.MainForm.resources
+C:\Users\Administrator\Desktop\test\test\obj\Debug\test.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\test\test\bin\Debug\test.exe.config
+C:\Users\Administrator\Desktop\test\test\bin\Debug\test.exe
+C:\Users\Administrator\Desktop\test\test\bin\Debug\test.pdb
+C:\Users\Administrator\Desktop\test\test\bin\Debug\OpenHardwareMonitorLib.dll
+C:\Users\Administrator\Desktop\test\test\obj\Debug\test.exe
+C:\Users\Administrator\Desktop\test\test\obj\Debug\test.pdb

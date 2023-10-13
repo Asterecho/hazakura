@@ -1,0 +1,9 @@
+C:\Users\Administrator\Desktop\WeatherComCn\WeatherComCn\bin\Debug\WeatherComCn.exe.config
+C:\Users\Administrator\Desktop\WeatherComCn\WeatherComCn\bin\Debug\WeatherComCn.exe
+C:\Users\Administrator\Desktop\WeatherComCn\WeatherComCn\bin\Debug\WeatherComCn.pdb
+C:\Users\Administrator\Desktop\WeatherComCn\WeatherComCn\obj\Debug\WeatherComCn.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\WeatherComCn\WeatherComCn\obj\Debug\WeatherComCn.exe
+C:\Users\Administrator\Desktop\WeatherComCn\WeatherComCn\obj\Debug\WeatherComCn.pdb
+C:\Users\Administrator\Desktop\WeatherComCn\WeatherComCn\bin\Debug\LitJson.dll
+C:\Users\Administrator\Desktop\WeatherComCn\WeatherComCn\obj\Debug\WeatherComCn.MainForm.resources
+C:\Users\Administrator\Desktop\WeatherComCn\WeatherComCn\obj\Debug\WeatherComCn.csproj.GenerateResource.Cache

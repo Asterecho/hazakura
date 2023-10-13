@@ -1,0 +1,9 @@
+C:\Users\Administrator\Desktop\freeWeather\freeWeather\obj\Debug\freeWeather.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\freeWeather\freeWeather\obj\Debug\freeWeather.MainForm.resources
+C:\Users\Administrator\Desktop\freeWeather\freeWeather\obj\Debug\freeWeather.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\freeWeather\freeWeather\bin\Debug\freeWeather.exe.config
+C:\Users\Administrator\Desktop\freeWeather\freeWeather\bin\Debug\freeWeather.exe
+C:\Users\Administrator\Desktop\freeWeather\freeWeather\bin\Debug\freeWeather.pdb
+C:\Users\Administrator\Desktop\freeWeather\freeWeather\bin\Debug\LitJson.dll
+C:\Users\Administrator\Desktop\freeWeather\freeWeather\obj\Debug\freeWeather.exe
+C:\Users\Administrator\Desktop\freeWeather\freeWeather\obj\Debug\freeWeather.pdb

@@ -12,3 +12,4 @@ C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\zxing.dll
 C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\AipSdk.dll
 C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Administrator\Desktop\hazakura\hazakura\bin\Debug\RestSharp.dll
+C:\Users\Administrator\Desktop\hazakura\hazakura\obj\Debug\hazakura.dark.resources

@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\TomatoClock\TomatoClock\bin\Debug\TomatoClock.exe.config
+C:\Users\Administrator\Desktop\TomatoClock\TomatoClock\bin\Debug\TomatoClock.exe
+C:\Users\Administrator\Desktop\TomatoClock\TomatoClock\bin\Debug\TomatoClock.pdb
+C:\Users\Administrator\Desktop\TomatoClock\TomatoClock\obj\Debug\TomatoClock.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\TomatoClock\TomatoClock\obj\Debug\TomatoClock.MainForm.resources
+C:\Users\Administrator\Desktop\TomatoClock\TomatoClock\obj\Debug\TomatoClock.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\TomatoClock\TomatoClock\obj\Debug\TomatoClock.exe
+C:\Users\Administrator\Desktop\TomatoClock\TomatoClock\obj\Debug\TomatoClock.pdb

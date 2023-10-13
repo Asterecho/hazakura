@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\lingva-translate\lingva-translate\bin\Debug\lingva-translate.exe.config
+C:\Users\Administrator\Desktop\lingva-translate\lingva-translate\bin\Debug\lingva-translate.exe
+C:\Users\Administrator\Desktop\lingva-translate\lingva-translate\bin\Debug\lingva-translate.pdb
+C:\Users\Administrator\Desktop\lingva-translate\lingva-translate\obj\Debug\lingva-translate.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\lingva-translate\lingva-translate\obj\Debug\lingva-translate.exe
+C:\Users\Administrator\Desktop\lingva-translate\lingva-translate\obj\Debug\lingva-translate.pdb

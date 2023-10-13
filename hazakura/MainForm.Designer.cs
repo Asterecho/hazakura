@@ -28,6 +28,9 @@ namespace hazakura
 		private System.Windows.Forms.PictureBox pictureBox6;
 		private System.Windows.Forms.PictureBox pictureBox7;
 		private System.Windows.Forms.PictureBox pictureBox8;
+		private System.Windows.Forms.PictureBox pictureBox9;
+		private System.Windows.Forms.PictureBox pictureBox10;
+		private System.Windows.Forms.Timer timer2;
 	  
 		
 		/// <summary>
@@ -66,6 +69,9 @@ namespace hazakura
 			this.pictureBox6 = new System.Windows.Forms.PictureBox();
 			this.pictureBox7 = new System.Windows.Forms.PictureBox();
 			this.pictureBox8 = new System.Windows.Forms.PictureBox();
+			this.pictureBox9 = new System.Windows.Forms.PictureBox();
+			this.pictureBox10 = new System.Windows.Forms.PictureBox();
+			this.timer2 = new System.Windows.Forms.Timer(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -74,6 +80,8 @@ namespace hazakura
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pictureBox1
@@ -194,7 +202,7 @@ namespace hazakura
 			this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox6.TabIndex = 10;
 			this.pictureBox6.TabStop = false;
-			this.pictureBox6.Click += new System.EventHandler(this.PictureBox6Click);
+			this.pictureBox6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox6MouseClick);
 			// 
 			// pictureBox7
 			// 
@@ -218,12 +226,41 @@ namespace hazakura
 			this.pictureBox8.TabStop = false;
 			this.pictureBox8.Click += new System.EventHandler(this.PictureBox8Click);
 			// 
+			// pictureBox9
+			// 
+			this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+			this.pictureBox9.Location = new System.Drawing.Point(617, 5);
+			this.pictureBox9.Name = "pictureBox9";
+			this.pictureBox9.Size = new System.Drawing.Size(51, 35);
+			this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox9.TabIndex = 13;
+			this.pictureBox9.TabStop = false;
+			this.pictureBox9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox9MouseClick);
+			// 
+			// pictureBox10
+			// 
+			this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+			this.pictureBox10.Location = new System.Drawing.Point(358, 60);
+			this.pictureBox10.Name = "pictureBox10";
+			this.pictureBox10.Size = new System.Drawing.Size(51, 35);
+			this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox10.TabIndex = 14;
+			this.pictureBox10.TabStop = false;
+			// 
+			// timer2
+			// 
+			this.timer2.Enabled = true;
+			this.timer2.Interval = 1000;
+			this.timer2.Tick += new System.EventHandler(this.Timer2Tick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.WhiteSmoke;
-			this.ClientSize = new System.Drawing.Size(668, 35);
+			this.ClientSize = new System.Drawing.Size(668, 107);
+			this.Controls.Add(this.pictureBox10);
+			this.Controls.Add(this.pictureBox9);
 			this.Controls.Add(this.pictureBox8);
 			this.Controls.Add(this.pictureBox7);
 			this.Controls.Add(this.pictureBox6);
@@ -244,7 +281,7 @@ namespace hazakura
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "hazakura";
 			this.TopMost = true;
-			this.TransparencyKey = System.Drawing.Color.Gray;
+			this.TransparencyKey = System.Drawing.Color.Transparent;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -254,6 +291,8 @@ namespace hazakura
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
 			this.ResumeLayout(false);
 
 		}

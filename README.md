@@ -12,15 +12,15 @@
 
 同时 komorebi 也是押尾桑有名的吉它曲
 
-本程式为topbar程序，类似的还有[yasb](https://github.com/denBot/yasb)、[Droptop-Four](https://github.com/Droptop-Four/Droptop-Four)等
+本程式为topbar程序，类似的还有yasb、Dropbar Four等
 
-软件起这个名字，是为了与平铺式程式 [komorebi](https://github.com/LGUG2Z/komorebi) 对仗与致敬
+软件起这个名字，是为了与平铺式程式 komorebi 对仗与致敬
 
-![](ScreenShot.png)
+![](func.png)
 
 ## 软件包含功能：
 
-![](func.png)
+![](ScreenShot.png)
 
 1. 鼠标左键，调用slidetoshutdown，下拉关机
 

@@ -36,12 +36,18 @@ namespace hazakura
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.SuspendLayout();
 			// 
 			// dark
 			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Text = "dark";
+			this.ClientSize = new System.Drawing.Size(284, 261);
 			this.Name = "dark";
+			this.ShowInTaskbar = false;
+			this.Text = "dark";
+			this.ResumeLayout(false);
+
 		}
 	}
 }
